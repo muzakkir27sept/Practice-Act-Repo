@@ -1,0 +1,26 @@
+name: practiceBuild
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: intall nodejssetup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - name: install dependecies
+        run: npm ci
+      - name: build project
+        run: npm run build
+      - name: lint project
+        run: npm run lint
+      - name: test project
+        run: npm run test
+  Message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: simple Message
+        run: echo "this is the code for deploying"
+
